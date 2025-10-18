@@ -1,14 +1,21 @@
+1-
 SELECT * FROM SalesLT.Customer 
 where FirstName LIKE '%[abcdef]'
 OR LastName LIKE '%[abcdef]'
 
-
+2-
 select a.City ,count(*) as count FROM SalesLT.CustomerAddress c
 join SalesLT.Address a ON c.AddressID = a.AddressID
 GROUP BY a.City
 order by count desc
 
-
+3-
 select soh.SalesOrderID , soh.OrderDate ,count(*) from SalesLT.SalesOrderDetail sod
 join SalesLT.SalesOrderHeader soh on soh.SalesOrderID = sod.SalesOrderID
-group by soh.SalesOrderID , soh.OrderDate 
+group by soh.SalesOrderID , soh.OrderDate
+
+4-
+select TOP 10 c.FirstName , c.LastName , soh.SubTotal from SalesLT.SalesOrderHeader soh 
+join SalesLT.Customer c on c.CustomerID = soh.CustomerID
+order by soh.SubTotal desc
+ 
